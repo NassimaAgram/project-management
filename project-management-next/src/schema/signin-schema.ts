@@ -5,16 +5,16 @@ const regex = {
 };
 
 export const SignInSchema = z.object({
-    email: z.string().email({
-        message: "Invalid email address",
-    }),
-    password: z.string().min(8, {
-        message: "Password must be at least 8 characters long",
-    }).max(12, {
-        message: "Password must be at most 12 characters long",
-    }).regex(regex.password, {
-        message: "Password must contain at least 1 letter, 1 number and 1 special character",
-    }),
+    email: z
+        .string()
+        .email({ message: "Invalid email address" }),
+
+    password: z
+        .string()
+        .min(8, { message: "Password must be at least 8 characters long" })
+        .max(12, { message: "Password must be at most 12 characters long" })
+        .regex(regex.password, { message: "Password must contain at least one letter, one number, and one special character" }),
+
 });
 
 export type SignInSchemaType = z.infer<typeof SignInSchema>;

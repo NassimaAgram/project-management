@@ -6,7 +6,7 @@ const SignInPage = () => {
     return (
         <Background>
             <Container>
-                <Wrapper className="relative flex flex-col mx-auto md:flex-row justify-center items-center pt-8 pb-4 overflow-hidden min-h-screen">
+                <Wrapper className="relative flex flex-col mx-auto md:flex-row justify-center items-center overflow-hidden min-h-screen">
                     <Particles
                         className="absolute inset-0 w-full h-full -z-10"
                         quantity={80}

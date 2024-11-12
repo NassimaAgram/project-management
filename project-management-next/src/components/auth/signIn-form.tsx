@@ -11,6 +11,14 @@ import { Eye, EyeOff, LoaderIcon } from "lucide-react";
 import Icons from "../global/icons";
 import LoadingIcon from "../ui/loading-icon";
 import { FADE_IN_VARIANTS } from "@/constants";
+import { z } from "zod";
+import Link from "next/link";
+
+// Define validation schema with zod
+const signInSchema = z.object({
+    email: z.string().email("Please enter a valid email address."),
+    password: z.string().min(6, "Password must be at least 6 characters long."),
+});
 
 const SignInForm = () => {
     const router = useRouter();
@@ -39,8 +47,14 @@ const SignInForm = () => {
     const handleSignIn = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
 
-        if (!email || !password) {
-            toast.error("All fields are required!");
+        // Validate form data with Zod
+        const validation = signInSchema.safeParse({ email, password });
+
+        if (!validation.success) {
+            // If validation fails, show toast error messages for each issue
+            validation.error.errors.forEach((error) => {
+                toast.error(error.message);
+            });
             return;
         }
 
@@ -60,10 +74,13 @@ const SignInForm = () => {
 
     return (
         <div className="flex items-center justify-center h-screen">
-            <div className="w-full max-w-md lg:max-w-lg p-8">
-                <h2 className="flex justify-center text-2xl font-semibold pb-8">
-                    Sign in to Proje<span className="text-transparent font-bold bg-gradient-to-br from-purple-700 to-blue-400 bg-clip-text">X</span>pert
-                </h2>
+            <div className="w-full max-w-md lg:max-w-lg p-4">
+                <Link href="/">
+                    <h2 className="flex justify-center text-2xl font-semibold pb-6 border-b border-border">
+                        Proje<span className="text-transparent font-bold bg-gradient-to-br from-purple-700 to-blue-400 bg-clip-text">X</span>pert
+                    </h2>
+                </Link>
+                <p className="text-sm text-gray-400 py-5">Sign in to your account to start using ProjeXpert</p>
                 <motion.div variants={FADE_IN_VARIANTS} animate="visible" initial="hidden">
                     <div className="w-full flex flex-col gap-y-4">
                         <Button
@@ -131,7 +148,7 @@ const SignInForm = () => {
                         </form>
 
                         {/* Sign Up Link */}
-                        <div className="text-center py-2  px-4">
+                        <div className="text-center py-2 px-10">
                             <span className="text-sm">Don't have an account? </span>
                             <a
                                 href="/auth/sign-up"
