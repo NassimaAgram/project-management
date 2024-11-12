@@ -59,12 +59,12 @@ const Navbar = () => {
                             ) : (
                                 <>
                                     <Button size="sm" variant="tertiary" asChild className="hover:translate-y-0 hover:scale-100">
-                                        <Link href="/auth/signin">
+                                        <Link href="/auth/sign-in">
                                             Sign In
                                         </Link>
                                     </Button>
                                     <Button size="sm" variant="white" asChild className="hidden sm:flex">
-                                        <Link href="/auth/signup">
+                                        <Link href="/auth/signu-p">
                                             Start for free
                                             <ArrowRightIcon className="w-4 h-4 ml-2 hidden lg:block" />
                                         </Link>

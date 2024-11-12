@@ -4,8 +4,8 @@ import Wrapper from "./global/wrapper";
 import Container from "./global/container";
 import Background from "./global/background";
 
-//import SignInForm from "./auth/signin-form";
-//import SignUpForm from "./auth/signup-form";
+import SignInForm from "./auth/signIn-form";
+import SignUpForm from "./auth/signUp-form";
 
 import Hero from "./mainpage/hero";
 import Navbar from "./mainpage/navbar";
@@ -34,6 +34,6 @@ export {
     Reviews,
     CTA,
     Footer,
-//    SignInForm,
-//    SignUpForm,
+    SignInForm,
+    SignUpForm,
 };

@@ -139,17 +139,19 @@
 }
 
 ::-webkit-scrollbar {
-  /* display: none; */
+  width: 6px;
+  scrollbar-color: #4d4d4d;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--foreground)/0.1);
-  border-radius: 10px;
+  background-color: #333333;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background: inherit;
+  background: rgba(0, 0, 0, 0);
 }
+
 
 img {
   user-select: none;
